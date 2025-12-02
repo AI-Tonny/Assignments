@@ -35,3 +35,7 @@ class PostChangedResponse(BaseModel):
     status: int
     success: bool
     data: PostResponse
+
+class PostDeletedResponse(BaseModel):
+    status: int
+    success: bool

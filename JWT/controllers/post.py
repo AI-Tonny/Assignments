@@ -3,10 +3,13 @@ from fastapi import APIRouter, Depends, status
 from JWT.services import PostService, AuthService
 from JWT.schemas.post import (
     PostCreate,
+    PostChange,
     PostResponse,
     PostsResponse,
     PostOneResponse,
-    PostCreatedResponse
+    PostCreatedResponse,
+    PostChangedResponse,
+    PostDeletedResponse
 )
 from JWT.models import User
 
@@ -41,7 +44,7 @@ async def get_posts(
     )
 
 @post_router.get("/get-post/{post_id}", response_model=PostOneResponse, status_code=status.HTTP_200_OK)
-async def get_posts(
+async def get_post(
         post_id: int,
         current_user: User = Depends(AuthService.get_current_user)
 ):
@@ -55,4 +58,34 @@ async def get_posts(
             content=post.content,
             user_id=post.user_id
         )
+    )
+
+@post_router.put("/change-post/{post_id}", response_model=PostChangedResponse, status_code=status.HTTP_200_OK)
+async def change_post(
+        post_id: int,
+        post: PostChange,
+        current_user: User = Depends(AuthService.get_current_user)
+):
+    changed_post = PostService.change_post(post, post_id, current_user.id)
+
+    return PostChangedResponse(
+        status=200,
+        success=True,
+        data=PostResponse(
+            title=changed_post.title,
+            content=changed_post.content,
+            user_id=changed_post.user_id
+        )
+    )
+
+@post_router.delete("/delete-post/{post_id}", response_model=PostDeletedResponse, status_code=status.HTTP_200_OK)
+async def change_post(
+        post_id: int,
+        current_user: User = Depends(AuthService.get_current_user)
+):
+    PostService.delete_post(post_id, current_user.id)
+
+    return PostDeletedResponse(
+        status=200,
+        success=True,
     )
