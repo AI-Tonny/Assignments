@@ -1,0 +1,221 @@
+{% extends 'products/base.html' %}
+
+{% block title %}All Products - Product Store{% endblock %}
+
+{% block extra_css %}
+<style>
+    .header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .header h1 {
+        font-size: 3rem;
+        color: white;
+        margin-bottom: 0.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    .product-card {
+        background: white;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
+    }
+
+    .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    .product-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 4rem;
+        color: white;
+    }
+
+    .product-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .product-body {
+        padding: 1.5rem;
+    }
+
+    .product-title {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 0.8rem;
+    }
+
+    .product-rating {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.8rem;
+        font-size: 1.1rem;
+    }
+
+    .stars {
+        color: #ffc107;
+    }
+
+    .product-description {
+        color: #666;
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .product-price {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #667eea;
+        margin-bottom: 1rem;
+    }
+
+    .product-actions {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .btn {
+        flex: 1;
+        padding: 0.7rem;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        text-align: center;
+        display: block;
+        font-size: 0.9rem;
+    }
+
+    .btn-view {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+    }
+
+    .btn-view:hover {
+        transform: scale(1.05);
+    }
+
+    .btn-edit {
+        background: #ffc107;
+        color: white;
+    }
+
+    .btn-edit:hover {
+        background: #e0a800;
+    }
+
+    .btn-delete {
+        background: #dc3545;
+        color: white;
+    }
+
+    .btn-delete:hover {
+        background: #c82333;
+    }
+
+    .no-products {
+        text-align: center;
+        padding: 4rem;
+        background: white;
+        border-radius: 16px;
+    }
+
+    .no-products h2 {
+        font-size: 2rem;
+        color: #666;
+        margin-bottom: 1rem;
+    }
+
+    .no-products a {
+        display: inline-block;
+        margin-top: 1rem;
+        padding: 1rem 2rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .no-products a:hover {
+        transform: scale(1.05);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="header">
+    <h1>🛍️ Our Products</h1>
+</div>
+
+{% if products %}
+<div class="products-grid">
+    {% for product in products %}
+    <div class="product-card">
+        <div class="product-image">
+            {% if product.photo_url %}
+                <img src="{{ product.photo_url }}" alt="{{ product.title }}" onerror="this.style.display='none'; this.parentNode.innerHTML='📦';">
+            {% else %}
+                📦
+            {% endif %}
+        </div>
+        <div class="product-body">
+            <div class="product-title">{{ product.title }}</div>
+            
+            <div class="product-rating">
+                <span class="stars">⭐</span>
+                <span>{{ product.rating }}</span>
+            </div>
+
+            {% if product.description %}
+            <div class="product-description">{{ product.description }}</div>
+            {% endif %}
+
+            <div class="product-price">${{ product.price }}</div>
+
+            <div class="product-actions">
+                <a href="{% url 'product_detail' product.id %}" class="btn btn-view">View</a>
+                <a href="{% url 'product_update' product.id %}" class="btn btn-edit">Edit</a>
+                <a href="{% url 'product_delete' product.id %}" class="btn btn-delete">Delete</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="no-products">
+    <h2>No products available</h2>
+    <p>Start by adding your first product!</p>
+    <a href="{% url 'product_create' %}">Add Product</a>
+</div>
+{% endif %}
+{% endblock %}

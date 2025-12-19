@@ -1,0 +1,8 @@
+Спочатку створив проект через 'django-admin startproject core .', потім створив модель Product в models.py, потім
+створив форму, щоб можна було через неї отримувати дані (fields = ['title', 'price', 'description', 'photo_url',
+'rating']) у forms.py, потім через Claude створив простий web, написав CRUD операції у views.py (product_list,
+product_detail, product_create, product_update та product_delete), потім у urls.py створив ендпоінти та приєднав їх до
+методів, потім приєднав цей роут(products.urls.py) до основного роута(core.urls.py), потім в core.settings.py
+INSTALLED_APPS вніс 'products', та запустив програму 'python manage.py runserver'.
+Складнощів не було воно схоже на минуле завдання, також коли прописуєш те що ти робив та в якій послідовності добре
+запам'ятовується
