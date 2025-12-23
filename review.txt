@@ -1,0 +1,7 @@
+Спочатку створив проект командою 'django-admin startproject core .', потім створив app /news 'python manage.py
+startapp news' потім вручну створив app /city, в news.models.py створив модель News після чого створив news.serializers
+в ній написав class NewsSerializer (Чи пишуть serializer, якщо вона серіалізує в об'єкт який повністю відповідає
+основному?), після чого написав в news.views.py viewsets я би добавив permission_classes = [IsAdminUser], щоби новини
+могли створювати лише Admin, але це треба було робити авторизовані запити тому я це залишив так, потім написав app
+/city web створив через Claude, далі написав city.urls.py та city.views.py потім приєднав в core.urls news.views.py та
+city.views.py в core.settings.py подобавляв 'news', 'city' та запустив додаток.

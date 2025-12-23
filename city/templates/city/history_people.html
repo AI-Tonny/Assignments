@@ -1,0 +1,227 @@
+{% extends 'city/base.html' %}
+
+{% block title %}Відомі мешканці - Історія Дніпра{% endblock %}
+
+{% block extra_css %}
+<style>
+    .history-header {
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .history-nav {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .history-nav a {
+        flex: 1;
+        min-width: 200px;
+        padding: 1.5rem;
+        background: white;
+        border-radius: 12px;
+        text-decoration: none;
+        color: #1e3c72;
+        font-weight: 600;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .history-nav a:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        color: white;
+    }
+
+    .history-nav .icon {
+        font-size: 2rem;
+    }
+
+    .people-grid {
+        display: grid;
+        gap: 2rem;
+    }
+
+    .person-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        display: flex;
+        gap: 2rem;
+        align-items: start;
+        transition: all 0.3s ease;
+    }
+
+    .person-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+    }
+
+    .person-photo {
+        width: 150px;
+        height: 150px;
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 4rem;
+        color: white;
+        flex-shrink: 0;
+    }
+
+    .person-info {
+        flex: 1;
+    }
+
+    .person-info h3 {
+        color: #1e3c72;
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .person-years {
+        color: #2a5298;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    .person-profession {
+        color: #666;
+        font-style: italic;
+        margin-bottom: 1rem;
+    }
+
+    .person-bio {
+        color: #555;
+        line-height: 1.8;
+    }
+
+    @media (max-width: 768px) {
+        .person-card {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .person-photo {
+            margin: 0 auto;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="history-header">
+    <h1>👥 Відомі мешканці Дніпра</h1>
+    <p>Люди, які прославили наше місто</p>
+</div>
+
+<div class="history-nav">
+    <a href="{% url 'history' %}">
+        <span class="icon">📜</span>
+        <span>Загальна історія</span>
+    </a>
+    <a href="{% url 'history_people' %}">
+        <span class="icon">👥</span>
+        <span>Відомі мешканці</span>
+    </a>
+    <a href="{% url 'history_photos' %}">
+        <span class="icon">📸</span>
+        <span>Історичні фото</span>
+    </a>
+</div>
+
+<div class="people-grid">
+    <div class="person-card">
+        <div class="person-photo">🎭</div>
+        <div class="person-info">
+            <h3>Леонід Биков</h3>
+            <p class="person-years">(1928-1979)</p>
+            <p class="person-profession">Актор, режисер, сценарист</p>
+            <p class="person-bio">Народний артист СРСР, відомий за ролями у фільмах "Тільки «старі» йдуть у бій", "Максим Перепеличенко", "Аїв гість". Народився та виріс у Дніпропетровську, де почав свою акторську кар'єру.</p>
+        </div>
+    </div>
+
+    <div class="person-card">
+        <div class="person-photo">🚀</div>
+        <div class="person-info">
+            <h3>Олег Новицький</h3>
+            <p class="person-years">(народився 1971)</p>
+            <p class="person-profession">Космонавт, Герой Росії</p>
+            <p class="person-bio">Народився в Дніпропетровську. Здійснив три космічні польоти на МКС. Провів у космосі понад 531 добу. Навчався в Дніпропетровській СДМШ №1.</p>
+        </div>
+    </div>
+
+    <div class="person-card">
+        <div class="person-photo">⚽</div>
+        <div class="person-info">
+            <h3>Андрій Ярмоленко</h3>
+            <p class="person-years">(народився 1989)</p>
+            <p class="person-profession">Футболіст</p>
+            <p class="person-bio">Вихованець дніпропетровського футболу. Капітан збірної України, гравець "Динамо" (Київ), "Борусії" (Дортмунд) та "Вест Гема". Один з найкращих українських футболістів свого покоління.</p>
+        </div>
+    </div>
+
+    <div class="person-card">
+        <div class="person-photo">🎸</div>
+        <div class="person-info">
+            <h3>Святослав Вакарчук</h3>
+            <p class="person-years">(народився 1975)</p>
+            <p class="person-profession">Музикант, громадський діяч</p>
+            <p class="person-bio">Лідер гурту "Океан Ельзи", один з найвідоміших українських музикантів. Хоча народився у Мукачево, довгий час жив та навчався в Дніпропетровську.</p>
+        </div>
+    </div>
+
+    <div class="person-card">
+        <div class="person-photo">✈️</div>
+        <div class="person-info">
+            <h3>Валерій Чкалов</h3>
+            <p class="person-years">(1904-1938)</p>
+            <p class="person-profession">Льотчик-випробувач</p>
+            <p class="person-bio">Легендарний радянський льотчик-випробувач, Герой Радянського Союзу. Навчався в Борисоглібській військовій авіаційній школі, яка під час Громадянської війни базувалася в Катеринославі.</p>
+        </div>
+    </div>
+
+    <div class="person-card">
+        <div class="person-photo">💎</div>
+        <div class="person-info">
+            <h3>Геннадій Боголюбов</h3>
+            <p class="person-years">(народився 1962)</p>
+            <p class="person-profession">Бізнесмен, інвестор</p>
+            <p class="person-bio">Співвласник ПриватБанку та Приват Груп. Один з найвпливовіших бізнесменів України. Активно інвестує в розвиток Дніпра, підтримує освітні та культурні проєкти міста.</p>
+        </div>
+    </div>
+
+    <div class="person-card">
+        <div class="person-photo">🎬</div>
+        <div class="person-info">
+            <h3>Євген Кошовий</h3>
+            <p class="person-years">(народився 1983)</p>
+            <p class="person-profession">Актор, шоумен</p>
+            <p class="person-bio">Учасник гурту "Квартал 95", актор серіалу "Слуга народу". Народився та виріс у Дніпрі, де почав свою творчу кар'єру.</p>
+        </div>
+    </div>
+
+    <div class="person-card">
+        <div class="person-photo">🎨</div>
+        <div class="person-info">
+            <h3>Сергій Параджанов</h3>
+            <p class="person-years">(1924-1990)</p>
+            <p class="person-profession">Кінорежисер, художник</p>
+            <p class="person-bio">Всесвітньо відомий кінорежисер, автор фільмів "Тіні забутих предків", "Колір граната". Навчався в Дніпропетровському художньому училищі.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,289 @@
+{% extends 'city/base.html' %}
+
+{% block title %}Історичні фото - Дніпро{% endblock %}
+
+{% block extra_css %}
+<style>
+    .history-header {
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .history-nav {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .history-nav a {
+        flex: 1;
+        min-width: 200px;
+        padding: 1.5rem;
+        background: white;
+        border-radius: 12px;
+        text-decoration: none;
+        color: #1e3c72;
+        font-weight: 600;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .history-nav a:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        color: white;
+    }
+
+    .history-nav .icon {
+        font-size: 2rem;
+    }
+
+    .photos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+    }
+
+    .photo-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+    }
+
+    .photo-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+    }
+
+    .photo-image {
+        width: 100%;
+        height: 250px;
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 5rem;
+        color: white;
+        position: relative;
+    }
+
+    .photo-year {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: rgba(0,0,0,0.7);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-weight: bold;
+    }
+
+    .photo-content {
+        padding: 1.5rem;
+    }
+
+    .photo-content h3 {
+        color: #1e3c72;
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .photo-content p {
+        color: #555;
+        line-height: 1.6;
+    }
+
+    .era-section {
+        margin-bottom: 3rem;
+    }
+
+    .era-title {
+        color: #1e3c72;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 3px solid #2a5298;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="history-header">
+    <h1>📸 Історичні фотографії Дніпра</h1>
+    <p>Подорож у минуле міста</p>
+</div>
+
+<div class="history-nav">
+    <a href="{% url 'history' %}">
+        <span class="icon">📜</span>
+        <span>Загальна історія</span>
+    </a>
+    <a href="{% url 'history_people' %}">
+        <span class="icon">👥</span>
+        <span>Відомі мешканці</span>
+    </a>
+    <a href="{% url 'history_photos' %}">
+        <span class="icon">📸</span>
+        <span>Історичні фото</span>
+    </a>
+</div>
+
+<div class="era-section">
+    <h2 class="era-title">XIX століття - Катеринослав</h2>
+    <div class="photos-grid">
+        <div class="photo-card">
+            <div class="photo-image">
+                🏛️
+                <span class="photo-year">1880-ті</span>
+            </div>
+            <div class="photo-content">
+                <h3>Спасо-Преображенський собор</h3>
+                <p>Головний православний храм Катеринослава, заклад перший камінь якого заклала сама імператриця Катерина II. Був одним з найбільших соборів Російської імперії.</p>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <div class="photo-image">
+                🏗️
+                <span class="photo-year">1890-ті</span>
+            </div>
+            <div class="photo-content">
+                <h3>Проспект Катерининський</h3>
+                <p>Головна вулиця міста наприкінці XIX століття. Тут розташовувалися найкращі магазини, готелі та ресторани міста.</p>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <div class="photo-image">
+                🚂
+                <span class="photo-year">1884</span>
+            </div>
+            <div class="photo-content">
+                <h3>Залізничний вокзал</h3>
+                <p>Відкриття залізничного сполучення стало поштовхом до швидкого промислового розвитку міста та перетворення його на важливий торговельний центр.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="era-section">
+    <h2 class="era-title">XX століття - Дніпропетровськ</h2>
+    <div class="photos-grid">
+        <div class="photo-card">
+            <div class="photo-image">
+                🏭
+                <span class="photo-year">1930-ті</span>
+            </div>
+            <div class="photo-content">
+                <h3>Індустріалізація</h3>
+                <p>Будівництво промислових гігантів - металургійних заводів, машинобудівних підприємств. Місто стає одним з найбільших промислових центрів СРСР.</p>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <div class="photo-image">
+                ⚔️
+                <span class="photo-year">1943</span>
+            </div>
+            <div class="photo-content">
+                <h3>Визволення міста</h3>
+                <p>25 жовтня 1943 року радянські війська визволили Дніпропетровськ від німецької окупації. Місто було значно зруйноване під час боїв.</p>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <div class="photo-image">
+                🚀
+                <span class="photo-year">1960-ті</span>
+            </div>
+            <div class="photo-content">
+                <h3>Космічна ера</h3>
+                <p>Південний машинобудівний завод виробляє ракети-носії. Дніпропетровськ стає закритим містом і неофіційною космічною столицею СРСР.</p>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <div class="photo-image">
+                🎓
+                <span class="photo-year">1970-ті</span>
+            </div>
+            <div class="photo-content">
+                <h3>Студентське місто</h3>
+                <p>Розквіт вищої освіти. Університети, політехнічні інститути приваблюють студентів з усього Союзу. Дніпропетровськ стає великим науковим центром.</p>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <div class="photo-image">
+                🌉
+                <span class="photo-year">1980-ті</span>
+            </div>
+            <div class="photo-content">
+                <h3>Новий міст</h3>
+                <p>Будівництво нових мостів через Дніпро покращує транспортне сполучення між лівим та правим берегами міста.</p>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <div class="photo-image">
+                🏙️
+                <span class="photo-year">1990-ті</span>
+            </div>
+            <div class="photo-content">
+                <h3>Незалежна Україна</h3>
+                <p>Перехід до ринкової економіки. Реконструкція центру міста. Дніпропетровськ зберігає статус одного з найважливіших міст України.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="era-section">
+    <h2 class="era-title">XXI століття - Дніпро</h2>
+    <div class="photos-grid">
+        <div class="photo-card">
+            <div class="photo-image">
+                🎉
+                <span class="photo-year">2016</span>
+            </div>
+            <div class="photo-content">
+                <h3>Повернення назви Дніпро</h3>
+                <p>19 травня 2016 року місто офіційно змінює назву з Дніпропетровськ на Дніпро. Відкривається нова сторінка в історії міста.</p>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <div class="photo-image">
+                🌳
+                <span class="photo-year">2020-ті</span>
+            </div>
+            <div class="photo-content">
+                <h3>Сучасне місто</h3>
+                <p>Модернізація інфраструктури, благоустрій парків та скверів. Дніпро стає сучасним європейським містом, зберігаючи свою промислову могутність.</p>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <div class="photo-image">
+                💪
+                <span class="photo-year">2022-2024</span>
+            </div>
+            <div class="photo-content">
+                <h3>Незламний Дніпро</h3>
+                <p>Місто демонструє стійкість під час повномасштабної війни. Дніпро стає важливим логістичним хабом та символом незламності українського народу.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,142 @@
+{% extends 'city/base.html' %}
+
+{% block title %}{{ news_item.title }} - Новини Дніпра{% endblock %}
+
+{% block extra_css %}
+<style>
+    .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        margin-bottom: 2rem;
+        padding: 0.8rem 1.5rem;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateX(-5px);
+    }
+
+    .news-detail-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .news-detail-image {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 8rem;
+        color: white;
+    }
+
+    .news-detail-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .news-detail-content {
+        padding: 3rem;
+    }
+
+    .news-detail-header {
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 2px solid #f0f0f0;
+    }
+
+    .news-detail-date {
+        color: #2a5298;
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .news-detail-title {
+        font-size: 2.5rem;
+        color: #1e3c72;
+        margin-bottom: 1rem;
+        line-height: 1.3;
+    }
+
+    .news-detail-text {
+        font-size: 1.15rem;
+        line-height: 1.8;
+        color: #555;
+        white-space: pre-line;
+    }
+
+    .news-id-badge {
+        display: inline-block;
+        background: #f0f4ff;
+        color: #2a5298;
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+        .news-detail-content {
+            padding: 2rem;
+        }
+
+        .news-detail-title {
+            font-size: 2rem;
+        }
+
+        .news-detail-image {
+            height: 250px;
+            font-size: 5rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<a href="{% url 'news' %}" class="back-link">
+    <span>←</span> Назад до новин
+</a>
+
+<div class="news-detail-card">
+    <div class="news-detail-image">
+        {% if news_item.image_url %}
+            <img src="{{ news_item.image_url }}" alt="{{ news_item.title }}" onerror="this.style.display='none'; this.parentNode.innerHTML='📰';">
+        {% else %}
+            📰
+        {% endif %}
+    </div>
+
+    <div class="news-detail-content">
+        <div class="news-detail-header">
+            <div class="news-detail-date">
+                <span>📅</span>
+                <span>{{ news_item.created_at|date:"d F Y року - H:i" }}</span>
+                <span class="news-id-badge">ID: #{{ news_item.id }}</span>
+            </div>
+            <h1 class="news-detail-title">{{ news_item.title }}</h1>
+        </div>
+
+        <div class="news-detail-text">{{ news_item.content }}</div>
+    </div>
+</div>
+{% endblock %}
