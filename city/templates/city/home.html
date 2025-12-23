@@ -1,0 +1,187 @@
+{% extends 'city/base.html' %}
+
+{% block title %}Головна - Дніпро{% endblock %}
+
+{% block extra_css %}
+<style>
+    .hero {
+        background: linear-gradient(rgba(30, 60, 114, 0.8), rgba(42, 82, 152, 0.8)), url('https://images.unsplash.com/photo-1604868150854-c47e91c6c0e7?w=1600');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 4rem 2rem;
+        border-radius: 16px;
+        margin-bottom: 3rem;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hero p {
+        font-size: 1.3rem;
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.8;
+    }
+
+    .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .feature-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+    }
+
+    .feature-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+        color: #1e3c72;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .feature-card p {
+        color: #666;
+        line-height: 1.6;
+    }
+
+    .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .stat-card {
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: 12px;
+        text-align: center;
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+        font-size: 1.1rem;
+        opacity: 0.9;
+    }
+
+    .info-section {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        margin-bottom: 2rem;
+    }
+
+    .info-section h2 {
+        color: #1e3c72;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .info-section p {
+        color: #555;
+        line-height: 1.8;
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>🏙️ Вітаємо у Дніпрі!</h1>
+    <p>Дніпро — третє за чисельністю населення місто України, важливий промисловий, культурний та освітній центр країни</p>
+</div>
+
+<div class="stats">
+    <div class="stat-card">
+        <div class="stat-number">980,000+</div>
+        <div class="stat-label">Населення</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number">405 км²</div>
+        <div class="stat-label">Площа міста</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number">1776</div>
+        <div class="stat-label">Рік заснування</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-number">9</div>
+        <div class="stat-label">Районів</div>
+    </div>
+</div>
+
+<div class="features">
+    <div class="feature-card">
+        <div class="feature-icon">🏭</div>
+        <h3>Промисловий центр</h3>
+        <p>Дніпро — один з найбільших промислових центрів України з потужною металургійною, машинобудівною та хімічною промисловістю.</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon">🎓</div>
+        <h3>Освіта і наука</h3>
+        <p>Місто налічує понад 70 закладів вищої освіти, включаючи Дніпровський національний університет та численні технічні ВНЗ.</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon">🚀</div>
+        <h3>Космічна столиця</h3>
+        <p>Дніпро відомий як космічна столиця України завдяки Південному машинобудівному заводу, який виробляє ракети-носії.</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon">🌉</div>
+        <h3>Набережна Дніпра</div>
+        <p>Місто розташоване на обох берегах річки Дніпро, з'єднаних кількома мостами. Набережна — улюблене місце відпочинку містян.</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon">🎭</div>
+        <h3>Культура</h3>
+        <p>У Дніпрі працюють численні театри, музеї, бібліотеки. Особливо відомий Дніпровський національний академічний театр опери та балету.</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon">⚽</div>
+        <h3>Спорт</h3>
+        <p>Місто має багату спортивну історію. Тут базується футбольний клуб "Дніпро-1" та численні спортивні комплекси.</p>
+    </div>
+</div>
+
+<div class="info-section">
+    <h2>Про місто</h2>
+    <p>Дніпро (до 2016 року — Дніпропетровськ) — місто в центральній Україні, адміністративний центр Дніпропетровської області. Розташоване на обох берегах річки Дніпро.</p>
+    
+    <p>Місто було засноване 1776 року як Катеринослав. У радянський період місто отримало назву Дніпропетровськ на честь Григорія Петровського. У 2016 році в рамках декомунізації місто повернуло історичну назву Дніпро.</p>
+    
+    <p>Сьогодні Дніпро — це динамічне місто з розвиненою інфраструктурою, потужним промисловим потенціалом та багатою культурною спадщиною. Місто є важливим транспортним вузлом України з великим аеропортом та залізничним вокзалом.</p>
+</div>
+{% endblock %}

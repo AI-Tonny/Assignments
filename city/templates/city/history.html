@@ -1,0 +1,279 @@
+{% extends 'city/base.html' %}
+
+{% block title %}Історія - Дніпро{% endblock %}
+
+{% block extra_css %}
+<style>
+    .history-header {
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .history-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .history-nav {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .history-nav a {
+        flex: 1;
+        min-width: 200px;
+        padding: 1.5rem;
+        background: white;
+        border-radius: 12px;
+        text-decoration: none;
+        color: #1e3c72;
+        font-weight: 600;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .history-nav a:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        color: white;
+    }
+
+    .history-nav .icon {
+        font-size: 2rem;
+    }
+
+    .timeline {
+        position: relative;
+        padding: 2rem 0;
+    }
+
+    .timeline::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: linear-gradient(180deg, #1e3c72 0%, #2a5298 100%);
+        transform: translateX(-50%);
+    }
+
+    .timeline-item {
+        position: relative;
+        margin-bottom: 3rem;
+        width: calc(50% - 2rem);
+    }
+
+    .timeline-item:nth-child(odd) {
+        margin-left: 0;
+        text-align: right;
+    }
+
+    .timeline-item:nth-child(even) {
+        margin-left: calc(50% + 2rem);
+        text-align: left;
+    }
+
+    .timeline-content {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        position: relative;
+    }
+
+    .timeline-year {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #2a5298;
+        margin-bottom: 1rem;
+    }
+
+    .timeline-content h3 {
+        color: #1e3c72;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .timeline-content p {
+        color: #555;
+        line-height: 1.8;
+    }
+
+    .timeline-dot {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: #2a5298;
+        border: 4px solid white;
+        border-radius: 50%;
+        top: 2rem;
+        box-shadow: 0 0 0 4px #2a5298;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot {
+        right: -2.5rem;
+        transform: translateX(50%);
+    }
+
+    .timeline-item:nth-child(even) .timeline-dot {
+        left: -2.5rem;
+        transform: translateX(-50%);
+    }
+
+    @media (max-width: 768px) {
+        .timeline::before {
+            left: 20px;
+        }
+
+        .timeline-item,
+        .timeline-item:nth-child(odd),
+        .timeline-item:nth-child(even) {
+            width: 100%;
+            margin-left: 3rem;
+            text-align: left;
+        }
+
+        .timeline-dot,
+        .timeline-item:nth-child(odd) .timeline-dot,
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -2.5rem;
+            transform: translateX(0);
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="history-header">
+    <h1>📜 Історія Дніпра</h1>
+    <p>Від заснування до сьогодення</p>
+</div>
+
+<div class="history-nav">
+    <a href="{% url 'history' %}">
+        <span class="icon">📜</span>
+        <span>Загальна історія</span>
+    </a>
+    <a href="{% url 'history_people' %}">
+        <span class="icon">👥</span>
+        <span>Відомі мешканці</span>
+    </a>
+    <a href="{% url 'history_photos' %}">
+        <span class="icon">📸</span>
+        <span>Історичні фото</span>
+    </a>
+</div>
+
+<div class="timeline">
+    <div class="timeline-item">
+        <div class="timeline-content">
+            <div class="timeline-year">1776</div>
+            <h3>Заснування міста</h3>
+            <p>Катерина II заснувала місто Катеринослав, яке мало стати "третьою столицею" Російської імперії після Москви та Санкт-Петербурга. Місто планувалося як адміністративний та культурний центр Південної України.</p>
+            <div class="timeline-dot"></div>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-content">
+            <div class="timeline-year">1787</div>
+            <h3>Візит Катерини II</h3>
+            <p>Імператриця Катерина II особисто відвідала місто та заклала перший камінь Спасо-Преображенського собору, який мав стати найбільшим храмом у Європі.</p>
+            <div class="timeline-dot"></div>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-content">
+            <div class="timeline-year">1796</div>
+            <h3>Перейменування в Новоросійськ</h3>
+            <p>Після смерті Катерини II місто було перейменоване в Новоросійськ, а губернський центр перенесено до Миколаєва.</p>
+            <div class="timeline-dot"></div>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-content">
+            <div class="timeline-year">1802</div>
+            <h3>Повернення назви</h3>
+            <p>Імператор Олександр I повернув місту статус губернського центру та назву Катеринослав.</p>
+            <div class="timeline-dot"></div>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-content">
+            <div class="timeline-year">1884</div>
+            <h3>Розвиток промисловості</h3>
+            <p>Будівництво залізниці та розвиток металургійної промисловості перетворюють Катеринослав на один з найважливіших промислових центрів Російської імперії.</p>
+            <div class="timeline-dot"></div>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-content">
+            <div class="timeline-year">1926</div>
+            <h3>Дніпропетровськ</h3>
+            <p>Місто перейменовано на честь Григорія Петровського, голови ВУЦВК, на Дніпропетровськ. Місто стає важливим індустріальним центром СРСР.</p>
+            <div class="timeline-dot"></div>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-content">
+            <div class="timeline-year">1941-1943</div>
+            <h3>Друга світова війна</h3>
+            <p>Під час німецької окупації місто зазнало значних руйнувань. Після визволення почалася масштабна відбудова.</p>
+            <div class="timeline-dot"></div>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-content">
+            <div class="timeline-year">1954</div>
+            <h3>Закрите місто</h3>
+            <p>У зв'язку з розвитком ракетно-космічної промисловості місто стає закритим для іноземців та отримує неофіційну назву "космічна столиця СРСР".</p>
+            <div class="timeline-dot"></div>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-content">
+            <div class="timeline-year">1991</div>
+            <h3>Незалежна Україна</h3>
+            <p>Після проголошення незалежності України Дніпропетровськ залишається одним з найбільших промислових та культурних центрів країни.</p>
+            <div class="timeline-dot"></div>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-content">
+            <div class="timeline-year">2016</div>
+            <h3>Повернення історичної назви</h3>
+            <p>У рамках декомунізації місто офіційно перейменовано на Дніпро. Це історична назва, пов'язана з розташуванням міста на річці Дніпро.</p>
+            <div class="timeline-dot"></div>
+        </div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-content">
+            <div class="timeline-year">2024</div>
+            <h3>Сьогодення</h3>
+            <p>Дніпро продовжує розвиватися як важливий економічний, науковий та культурний центр України, зберігаючи свою роль космічної столиці країни.</p>
+            <div class="timeline-dot"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,179 @@
+{% extends 'city/base.html' %}
+
+{% block title %}Новини - Дніпро{% endblock %}
+
+{% block extra_css %}
+<style>
+    .news-header {
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .news-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .news-grid {
+        display: grid;
+        gap: 2rem;
+    }
+
+    .news-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .news-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+    }
+
+    .news-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 4rem;
+        color: white;
+    }
+
+    .news-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .news-content {
+        padding: 1.5rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .news-date {
+        color: #2a5298;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    .news-title {
+        font-size: 1.5rem;
+        color: #1e3c72;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+
+    .news-text {
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+        flex: 1;
+    }
+
+    .news-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 1rem;
+        border-top: 1px solid #e0e0e0;
+    }
+
+    .read-more {
+        color: #2a5298;
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        background: #f0f4ff;
+    }
+
+    .read-more:hover {
+        background: #2a5298;
+        color: white;
+        gap: 0.8rem;
+    }
+
+    .no-news {
+        background: white;
+        padding: 3rem;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .no-news h2 {
+        font-size: 2rem;
+        color: #666;
+        margin-bottom: 1rem;
+    }
+
+    @media (min-width: 768px) {
+        .news-card {
+            flex-direction: row;
+        }
+
+        .news-image {
+            width: 300px;
+            height: auto;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="news-header">
+    <h1>📰 Новини Дніпра</h1>
+    <p>Актуальні події та новини міста</p>
+</div>
+
+{% if news %}
+<div class="news-grid">
+    {% for news_item in news %}
+    <div class="news-card">
+        <div class="news-image">
+            {% if news_item.image_url %}
+                <img src="{{ news_item.image_url }}" alt="{{ news_item.title }}" onerror="this.style.display='none'; this.parentNode.innerHTML='📰';">
+            {% else %}
+                📰
+            {% endif %}
+        </div>
+        <div class="news-content">
+            <div class="news-date">
+                📅 {{ news_item.created_at|date:"d F Y - H:i" }}
+            </div>
+            <h2 class="news-title">{{ news_item.title }}</h2>
+            <p class="news-text">{{ news_item.content|truncatewords:50 }}</p>
+            <div class="news-footer">
+                <a href="{% url 'news_detail' news_item.id %}" class="read-more">
+                    Читати далі →
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="no-news">
+    <h2>📭 Новин поки немає</h2>
+    <p>Слідкуйте за оновленнями!</p>
+</div>
+{% endif %}
+{% endblock %}

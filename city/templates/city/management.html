@@ -1,0 +1,220 @@
+{% extends 'city/base.html' %}
+
+{% block title %}Керівництво - Дніпро{% endblock %}
+
+{% block extra_css %}
+<style>
+    .management-header {
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .management-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .mayor-section {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        margin-bottom: 2rem;
+    }
+
+    .mayor-card {
+        display: flex;
+        gap: 2rem;
+        align-items: start;
+        flex-wrap: wrap;
+    }
+
+    .mayor-photo {
+        width: 200px;
+        height: 250px;
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 6rem;
+        color: white;
+        flex-shrink: 0;
+    }
+
+    .mayor-info {
+        flex: 1;
+        min-width: 300px;
+    }
+
+    .mayor-info h2 {
+        color: #1e3c72;
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .mayor-info .position {
+        color: #2a5298;
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+    }
+
+    .mayor-info p {
+        color: #555;
+        line-height: 1.8;
+        margin-bottom: 1rem;
+    }
+
+    .leaders-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .leader-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+    }
+
+    .leader-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+    }
+
+    .leader-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .leader-card h3 {
+        color: #1e3c72;
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .leader-card .title {
+        color: #2a5298;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+
+    .leader-card p {
+        color: #666;
+        line-height: 1.6;
+    }
+
+    .contact-info {
+        background: #f8f9fa;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-top: 1rem;
+    }
+
+    .contact-info p {
+        margin: 0.5rem 0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .section-title {
+        color: #1e3c72;
+        font-size: 2rem;
+        margin: 3rem 0 1.5rem 0;
+        padding-bottom: 0.5rem;
+        border-bottom: 3px solid #2a5298;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="management-header">
+    <h1>🏛️ Керівництво міста</h1>
+    <p>Міська влада Дніпра</p>
+</div>
+
+<div class="mayor-section">
+    <div class="mayor-card">
+        <div class="mayor-photo">👨‍💼</div>
+        <div class="mayor-info">
+            <h2>Борис Філатов</h2>
+            <p class="position">Міський голова Дніпра</p>
+            <p>Борис Альбертович Філатов обіймає посаду міського голови Дніпра з 2015 року. За час його керівництва місто пройшло через складні часи та продовжує активно розвиватися.</p>
+            <p>Під його керівництвом реалізуються численні проєкти з модернізації міської інфраструктури, розвитку транспорту, благоустрою та цифровізації міських послуг.</p>
+            <div class="contact-info">
+                <p>📧 Email: mayor@dniprocity.gov.ua</p>
+                <p>📞 Приймальня: (056) 744-11-11</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2 class="section-title">Виконавчий комітет міської ради</h2>
+
+<div class="leaders-grid">
+    <div class="leader-card">
+        <div class="leader-icon">👨‍💼</div>
+        <h3>Перший заступник міського голови</h3>
+        <p class="title">Михайло Лисенко</p>
+        <p>Координує роботу департаментів та управлінь міської ради, відповідає за виконання рішень міської ради.</p>
+    </div>
+
+    <div class="leader-card">
+        <div class="leader-icon">🏗️</div>
+        <h3>Департамент містобудування</h3>
+        <p class="title">Андрій Смирнов</p>
+        <p>Відповідає за розвиток містобудівної політики, архітектурне планування та будівництво.</p>
+    </div>
+
+    <div class="leader-card">
+        <div class="leader-icon">🚌</div>
+        <h3>Департамент транспорту</h3>
+        <p class="title">Олексій Коваленко</p>
+        <p>Керує розвитком міського транспорту, організацією дорожнього руху та обслуговуванням доріг.</p>
+    </div>
+
+    <div class="leader-card">
+        <div class="leader-icon">💰</div>
+        <h3>Фінансовий департамент</h3>
+        <p class="title">Наталія Петренко</p>
+        <p>Управляє міським бюджетом, фінансовою політикою та економічним розвитком міста.</p>
+    </div>
+
+    <div class="leader-card">
+        <div class="leader-icon">🏥</div>
+        <h3>Департамент охорони здоров'я</h3>
+        <p class="title">Віктор Іваненко</p>
+        <p>Координує роботу медичних закладів міста та реалізацію програм охорони здоров'я.</p>
+    </div>
+
+    <div class="leader-card">
+        <div class="leader-icon">🎓</div>
+        <h3>Департамент освіти і науки</h3>
+        <p class="title">Ірина Кравченко</p>
+        <p>Забезпечує розвиток системи освіти, координує роботу шкіл та дошкільних закладів.</p>
+    </div>
+
+    <div class="leader-card">
+        <div class="leader-icon">🌳</div>
+        <h3>Департамент екології</h3>
+        <p class="title">Павло Мельник</p>
+        <p>Відповідає за охорону навколишнього середовища, екологічну безпеку та озеленення міста.</p>
+    </div>
+
+    <div class="leader-card">
+        <div class="leader-icon">🎭</div>
+        <h3>Департамент культури</h3>
+        <p class="title">Олена Шевченко</p>
+        <p>Керує розвитком культурної сфери, організацією міських заходів та підтримкою мистецтва.</p>
+    </div>
+</div>
+{% endblock %}

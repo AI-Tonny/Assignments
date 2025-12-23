@@ -1,0 +1,369 @@
+{% extends 'city/base.html' %}
+
+{% block title %}Контакти - Дніпро{% endblock %}
+
+{% block extra_css %}
+<style>
+    .contacts-header {
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .contacts-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .emergency-section {
+        background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .emergency-section h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .emergency-numbers {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+
+    .emergency-card {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 1.5rem;
+        border-radius: 12px;
+        backdrop-filter: blur(10px);
+    }
+
+    .emergency-card .icon {
+        font-size: 3rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .emergency-card .number {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin: 0.5rem 0;
+    }
+
+    .emergency-card .service {
+        font-size: 1.1rem;
+        opacity: 0.9;
+    }
+
+    .contacts-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .contact-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+    }
+
+    .contact-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+    }
+
+    .contact-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .contact-card h3 {
+        color: #1e3c72;
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+
+    .contact-info {
+        color: #555;
+        line-height: 2;
+    }
+
+    .contact-info p {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 0.5rem 0;
+    }
+
+    .contact-info a {
+        color: #2a5298;
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .contact-info a:hover {
+        color: #1e3c72;
+        text-decoration: underline;
+    }
+
+    .category-title {
+        color: #1e3c72;
+        font-size: 2rem;
+        margin: 3rem 0 1.5rem 0;
+        padding-bottom: 0.5rem;
+        border-bottom: 3px solid #2a5298;
+    }
+
+    .city-hall-section {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        margin-bottom: 2rem;
+    }
+
+    .city-hall-section h2 {
+        color: #1e3c72;
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .city-hall-section p {
+        color: #555;
+        line-height: 2;
+        margin: 0.5rem 0;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="contacts-header">
+    <h1>📞 Контактні телефони міських служб</h1>
+    <p>Важливі номери телефонів Дніпра</p>
+</div>
+
+<div class="emergency-section">
+    <h2>🚨 Екстрені служби</h2>
+    <div class="emergency-numbers">
+        <div class="emergency-card">
+            <div class="icon">🚒</div>
+            <div class="number">101</div>
+            <div class="service">Пожежна служба</div>
+        </div>
+        <div class="emergency-card">
+            <div class="icon">👮</div>
+            <div class="number">102</div>
+            <div class="service">Поліція</div>
+        </div>
+        <div class="emergency-card">
+            <div class="icon">🚑</div>
+            <div class="number">103</div>
+            <div class="service">Швидка допомога</div>
+        </div>
+        <div class="emergency-card">
+            <div class="icon">⚠️</div>
+            <div class="number">104</div>
+            <div class="service">Газова служба</div>
+        </div>
+        <div class="emergency-card">
+            <div class="icon">📞</div>
+            <div class="number">112</div>
+            <div class="service">Єдиний номер</div>
+        </div>
+    </div>
+</div>
+
+<div class="city-hall-section">
+    <h2>🏛️ Міська рада Дніпра</h2>
+    <p>📍 Адреса: пр. Дмитра Яворницького, 75, Дніпро, 49000</p>
+    <p>📞 Приймальня міського голови: <a href="tel:+380567441111">(056) 744-11-11</a></p>
+    <p>📧 Email: <a href="mailto:info@dniprocity.gov.ua">info@dniprocity.gov.ua</a></p>
+    <p>🌐 Веб-сайт: <a href="https://dniprorada.gov.ua" target="_blank">dniprorada.gov.ua</a></p>
+    <p>🕐 Час роботи: Пн-Пт 9:00-18:00</p>
+</div>
+
+<h2 class="category-title">🏥 Медичні заклади</h2>
+<div class="contacts-grid">
+    <div class="contact-card">
+        <div class="contact-icon">🏥</div>
+        <h3>Обласна клінічна лікарня</h3>
+        <div class="contact-info">
+            <p>📞 <a href="tel:+380567135500">(056) 713-55-00</a></p>
+            <p>📞 <a href="tel:+380567135501">(056) 713-55-01</a></p>
+            <p>📍 вул. Володимира Винниченка, 31</p>
+        </div>
+    </div>
+
+    <div class="contact-card">
+        <div class="contact-icon">👶</div>
+        <h3>Дитяча лікарня №1</h3>
+        <div class="contact-info">
+            <p>📞 <a href="tel:+380567436170">(056) 743-61-70</a></p>
+            <p>📞 <a href="tel:+380567436180">(056) 743-61-80</a></p>
+            <p>📍 вул. Космічна, 13</p>
+        </div>
+    </div>
+
+    <div class="contact-card">
+        <div class="contact-icon">🦷</div>
+        <h3>Міська стоматологічна поліклініка</h3>
+        <div class="contact-info">
+            <p>📞 <a href="tel:+380567422555">(056) 742-25-55</a></p>
+            <p>📍 вул. Січеславська Набережна, 21</p>
+        </div>
+    </div>
+</div>
+
+<h2 class="category-title">🚌 Транспорт</h2>
+<div class="contacts-grid">
+    <div class="contact-card">
+        <div class="contact-icon">🚇</div>
+        <h3>Метрополітен</h3>
+        <div class="contact-info">
+            <p>📞 <a href="tel:+380567451000">(056) 745-10-00</a></p>
+            <p>📞 Диспетчерська: <a href="tel:+380567451050">(056) 745-10-50</a></p>
+            <p>🕐 Режим роботи: 6:00-23:00</p>
+        </div>
+    </div>
+
+    <div class="contact-card">
+        <div class="contact-icon">🚌</div>
+        <h3>Міський транспорт</h3>
+        <div class="contact-info">
+            <p>📞 Довідкова: <a href="tel:+380567721010">(056) 772-10-10</a></p>
+            <p>📞 Диспетчерська: <a href="tel:+380567441630">(056) 744-16-30</a></p>
+        </div>
+    </div>
+
+    <div class="contact-card">
+        <div class="contact-icon">🚕</div>
+        <h3>Таксі</h3>
+        <div class="contact-info">
+            <p>📞 Таксі Bolt: <a href="tel:+380800211777">0 800 211 777</a></p>
+            <p>📞 Таксі Uklon: <a href="tel:+380800300030">0 800 300 030</a></p>
+            <p>📞 Міське таксі: <a href="tel:+380567401111">(056) 740-11-11</a></p>
+        </div>
+    </div>
+
+    <div class="contact-card">
+        <div class="contact-icon">🚂</div>
+        <h3>Залізничний вокзал</h3>
+        <div class="contact-info">
+            <p>📞 Довідкова: <a href="tel:0443655700">044 365-57-00</a></p>
+            <p>📞 Каси: <a href="tel:+380567459000">(056) 745-90-00</a></p>
+            <p>📍 пл. Вокзальна, 1</p>
+        </div>
+    </div>
+
+    <div class="contact-card">
+        <div class="contact-icon">✈️</div>
+        <h3>Аеропорт</h3>
+        <div class="contact-info">
+            <p>📞 Довідкова: <a href="tel:+380567788888">(056) 778-88-88</a></p>
+            <p>📍 вул. Взлітна, 1</p>
+        </div>
+    </div>
+</div>
+
+<h2 class="category-title">🏠 Комунальні служби</h2>
+<div class="contacts-grid">
+    <div class="contact-card">
+        <div class="contact-icon">💧</div>
+        <h3>Водоканал</h3>
+        <div class="contact-info">
+            <p>📞 Гаряча лінія: <a href="tel:+380567702000">(056) 770-20-00</a></p>
+            <p>📞 Аварійна: <a href="tel:+380567702020">(056) 770-20-20</a></p>
+            <p>🕐 Цілодобово</p>
+        </div>
+    </div>
+
+    <div class="contact-card">
+        <div class="contact-icon">⚡</div>
+        <h3>Обленерго</h3>
+        <div class="contact-info">
+            <p>📞 Гаряча лінія: <a href="tel:0800501001">0 800 501 001</a></p>
+            <p>📞 Диспетчерська: <a href="tel:+380567765555">(056) 776-55-55</a></p>
+            <p>🕐 Цілодобово</p>
+        </div>
+    </div>
+
+    <div class="contact-card">
+        <div class="contact-icon">🔥</div>
+        <h3>Теплові мережі</h3>
+        <div class="contact-info">
+            <p>📞 Диспетчерська: <a href="tel:+380567445200">(056) 744-52-00</a></p>
+            <p>📞 Аварійна: <a href="tel:+380567445210">(056) 744-52-10</a></p>
+            <p>🕐 Цілодобово</p>
+        </div>
+    </div>
+
+    <div class="contact-card">
+        <div class="contact-icon">♻️</div>
+        <h3>Комунальне господарство</h3>
+        <div class="contact-info">
+            <p>📞 Прибирання: <a href="tel:+380567448010">(056) 744-80-10</a></p>
+            <p>📞 Зелене господарство: <a href="tel:+380567448020">(056) 744-80-20</a></p>
+        </div>
+    </div>
+</div>
+
+<h2 class="category-title">🎓 Освіта</h2>
+<div class="contacts-grid">
+    <div class="contact-card">
+        <div class="contact-icon">🎓</div>
+        <h3>Департамент освіти</h3>
+        <div class="contact-info">
+            <p>📞 <a href="tel:+380567442000">(056) 744-20-00</a></p>
+            <p>📧 <a href="mailto:education@dniprocity.gov.ua">education@dniprocity.gov.ua</a></p>
+        </div>
+    </div>
+
+    <div class="contact-card">
+        <div class="contact-icon">🏛️</div>
+        <h3>Дніпровський університет</h3>
+        <div class="contact-info">
+            <p>📞 <a href="tel:+380563745245">(056) 374-52-45</a></p>
+            <p>📍 просп. Гагаріна, 72</p>
+        </div>
+    </div>
+</div>
+
+<h2 class="category-title">🎭 Культура</h2>
+<div class="contacts-grid">
+    <div class="contact-card">
+        <div class="contact-icon">🎭</div>
+        <h3>Театр опери та балету</h3>
+        <div class="contact-info">
+            <p>📞 Каси: <a href="tel:+380563747414">(056) 374-74-14</a></p>
+            <p>📍 вул. Театральна, 5</p>
+        </div>
+    </div>
+
+    <div class="contact-card">
+        <div class="contact-icon">🎪</div>
+        <h3>Цирк</h3>
+        <div class="contact-info">
+            <p>📞 <a href="tel:+380567212490">(056) 721-24-90</a></p>
+            <p>📍 пл. Соборна, 15</p>
+        </div>
+    </div>
+
+    <div class="contact-card">
+        <div class="contact-icon">🏛️</div>
+        <h3>Історичний музей</h3>
+        <div class="contact-info">
+            <p>📞 <a href="tel:+380567446209">(056) 744-62-09</a></p>
+            <p>📍 вул. Дмитра Яворницького, 16</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
