@@ -1,0 +1,160 @@
+{
+	"info": {
+		"_postman_id": "9721a0ff-e316-42a1-9d4c-49a88fa400d6",
+		"name": "API Reviews & JWT authentication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48670200",
+		"_collection_link": "https://akproiok-4528261.postman.co/workspace/%D0%90%D0%BD%D0%B4%D1%80%D1%96%D0%B9-%D0%A1%D0%B2%D1%96%D1%80%D0%B5%D0%BD%D0%BA%D0%BE's-Workspace~1e001616-d551-448c-874e-25edca4d228a/collection/48670200-9721a0ff-e316-42a1-9d4c-49a88fa400d6?action=share&source=collection_link&creator=48670200"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "User registration",
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "User login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Jay\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_host}}/api/auth/login/",
+							"host": [
+								"{{local_host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "Create a review",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Jay\",\r\n    \"password\": \"123456\"\r\n}"
+						},
+						"url": {
+							"raw": "{{local_host}}/api/reviews/",
+							"host": [
+								"{{local_host}}"
+							],
+							"path": [
+								"api",
+								"reviews",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all reviews",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get one review",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_host}}/api/reviews/1",
+							"host": [
+								"{{local_host}}"
+							],
+							"path": [
+								"api",
+								"reviews",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a review",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a review",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY2NzUyODQxLCJpYXQiOjE3NjY3NTI1NDEsImp0aSI6IjY2ZWY3ZGNlNWIzZTRkMGE4YzljMmY5ZDliOTY5MTIxIiwidXNlcl9pZCI6IjIifQ.tQijEGygWqx4ET0m9xCbBC7JXKpG__vNkVjP0foK0a8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Jay\",\r\n    \"password\": \"123456\"\r\n}"
+						},
+						"url": {
+							"raw": "{{local_host}}/api/reviews/1/",
+							"host": [
+								"{{local_host}}"
+							],
+							"path": [
+								"api",
+								"reviews",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "local_host",
+			"value": "",
+			"type": "default"
+		}
+	]
+}

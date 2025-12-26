@@ -1,0 +1,16 @@
+Спочатку створив проєкт командою 'django-admin startproject core .', потім створив app /reviews 'python manage.py
+startapp reviews', створив в reviews.models.py class Review(models.Model) де поле 'author' буде в мене користувачем,
+потім написав в reviews.serializers.py class ReviewSerializer(serializers.ModelSerializer) model-модель яку
+серіалізувати, fields-поля які потрібно брати з моделі, потім написав в reviews.views.py class ReviewViewSet(viewsets.
+ModelViewSet), permission_classes=[IsAuthenticated]-масив дозволів, IsAuthenticated-чи автентифікований,
+def perform_create(self, serializer)-функція яка виконується перед створенням, serializer.save(author=self.request.user)
+-зберігає у поле Review.author self.request.user-користувач який виконує запит, в core.urls.py додаю endpoints для
+reviews через router.register(r'reviews', ReviewViewSet), а потім приєдную router в основну навігацію url, потім
+створюю /auth 'python manage.py startapp auth', додаю auth.serializers.py пишу в середині class
+UserRegistrationSerializer(serializers.ModelSerializer), password = serializers.CharField(write_only=True)-кажу
+password тільки для запису, не для читання, пишу def create(self, validated_data) - як я зрозумів це пишеться для того,
+щоб переписати POST створення, далі створюю auth.views.py в ній пишу class RegisterView(generics.CreateAPIView),
+generics.CreateAPIView - це створює готовий клас для створення нових об'єктів (записів) у базі даних через API,
+створюю auth.urls пишу там endpoints, додаю до core.urls через path('api/auth/', include('auth.urls')), потім в
+core.settings.py INSTALLED_APPS додаю 'rest_framework_simple_jwt', 'rest_framework', 'reviews', потім запускаю програму
+'python manage.py runserver'
