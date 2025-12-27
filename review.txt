@@ -1,0 +1,11 @@
+Спочатку ініціалізував проєкт командою 'django-admin startproject core .', створив /news 'python manage.py startapp
+news', написав у news.models.py модель News author є зовнішнім ключем який позначає користувача цієї новини, потім
+створив news.serializers.py в середині створив serializer NewsSerializer, потім в news.views.py написав NewsViewSet,
+в середині зробив кастомний роут через @action(), для отримання всіх новин створених менше доби тому, викликається по
+шляху /api/news/in_last_24_hours-останнє слово є назвою функції цього кастомного роута, detail=False, methods=['get'],
+permission_classes=[IsAuthenticatedOrReadOnly] - detail=False вказує, що екшн діє на колекцію тому шлях буде /api/news/
+method_name, detail=True вказує, що екшн діє на один об'єкт колекції тому шлях буде /api/news/<int:pk>/method_name,
+і екшн буде приймати всередині функції pk, потом добавив в core.urls.py через DefaultRouter, написав /auth та також
+прив'язав до core.urls.py, в core.settings.py INSTALLED_APP добавив 'rest_framework_simplejwt', 'rest_framework',
+'news', зробив міграції 'python manage.py makemigrations' та потім запустив міграції 'python manage.py migrate' та
+запустив програму.

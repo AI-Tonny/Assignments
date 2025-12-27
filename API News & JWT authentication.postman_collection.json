@@ -1,0 +1,285 @@
+{
+	"info": {
+		"_postman_id": "7674ec52-b3dd-4034-a7ae-6e7ad9bf88bf",
+		"name": "API News & JWT authentication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48670200",
+		"_collection_link": "https://akproiok-4528261.postman.co/workspace/%D0%90%D0%BD%D0%B4%D1%80%D1%96%D0%B9-%D0%A1%D0%B2%D1%96%D1%80%D0%B5%D0%BD%D0%BA%D0%BE's-Workspace~1e001616-d551-448c-874e-25edca4d228a/collection/48670200-7674ec52-b3dd-4034-a7ae-6e7ad9bf88bf?action=share&source=collection_link&creator=48670200"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "User registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Dareth\",\r\n    \"email\": \"dareth@techaccount.com\",\r\n    \"password\": \"super-password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_host}}/api/auth/registration/",
+							"host": [
+								"{{local_host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"registration",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Dareth\",\r\n    \"password\": \"super-password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_host}}/api/auth/login/",
+							"host": [
+								"{{local_host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "News",
+			"item": [
+				{
+					"name": "Create a news",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"SpaceX успішно запустила корабель Starship у шостий тестовий політ\",\r\n  \"content\": \"Компанія SpaceX здійснила черговий запуск найпотужнішої ракетної системи у світі. Під час місії перевіряли можливість повторного запалювання двигуна Raptor у космосі та оновлену систему теплозахисту.\",\r\n  \"image_url\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Starship_S24_on_top_of_Booster_7.jpg/1200px-Starship_S24_on_top_of_Booster_7.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_host}}/api/news/",
+							"host": [
+								"{{local_host}}"
+							],
+							"path": [
+								"api",
+								"news",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all news",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Jay\",\r\n    \"password\": \"123456\"\r\n}"
+						},
+						"url": {
+							"raw": "{{local_host}}/api/news/",
+							"host": [
+								"{{local_host}}"
+							],
+							"path": [
+								"api",
+								"news",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one news",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_host}}/api/reviews/1",
+							"host": [
+								"{{local_host}}"
+							],
+							"path": [
+								"api",
+								"reviews",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get news in last 24 hours",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_host}}/api/news/1",
+							"host": [
+								"{{local_host}}"
+							],
+							"path": [
+								"api",
+								"news",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get news with special word",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY2ODYwMTE5LCJpYXQiOjE3NjY4NTk4MTksImp0aSI6ImE5YzYxNThiYzE1NTRmOWJiZjVkZWEzMzVlNzhhYWEyIiwidXNlcl9pZCI6IjEifQ.ayj7dVZqnhaMiHAUiZ2sYolIEEfU2ZODaMukn3SmAtQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local_host}}/api/news?search=за",
+							"host": [
+								"{{local_host}}"
+							],
+							"path": [
+								"api",
+								"news"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "за"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a news",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY2ODYwNDkzLCJpYXQiOjE3NjY4NjAxOTMsImp0aSI6ImY2ZWIwYzcxMDE1YjQ4NmJiMTk1MjYyZGU1YThhNTg3IiwidXNlcl9pZCI6IjEifQ.WeaTHS2ixknEfmEl7jR6GC2RFIKRxQYWzfQelFXjScY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"SpaceX успішно запустила корабель Starship у шостий тестовий політ :)\",\r\n  \"content\": \"Компанія SpaceX здійснила черговий запуск найпотужнішої ракетної системи у світі. Під час місії перевіряли можливість повторного запалювання двигуна Raptor у космосі та оновлену систему теплозахисту.\",\r\n  \"image_url\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Starship_S24_on_top_of_Booster_7.jpg/1200px-Starship_S24_on_top_of_Booster_7.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_host}}/api/news/5/",
+							"host": [
+								"{{local_host}}"
+							],
+							"path": [
+								"api",
+								"news",
+								"5",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a news",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY2NzUyODQxLCJpYXQiOjE3NjY3NTI1NDEsImp0aSI6IjY2ZWY3ZGNlNWIzZTRkMGE4YzljMmY5ZDliOTY5MTIxIiwidXNlcl9pZCI6IjIifQ.tQijEGygWqx4ET0m9xCbBC7JXKpG__vNkVjP0foK0a8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Jay\",\r\n    \"password\": \"123456\"\r\n}"
+						},
+						"url": {
+							"raw": "{{local_host}}/api/reviews/1/",
+							"host": [
+								"{{local_host}}"
+							],
+							"path": [
+								"api",
+								"reviews",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "local_host",
+			"value": "",
+			"type": "default"
+		}
+	]
+}
