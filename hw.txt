@@ -1,0 +1,8 @@
+Опис завдання:
+### Домашнє завдання для студентів
+1. **Blacklist**: Налаштувати `django-rest-framework-simplejwt[crypto]` і додати додаток `token_blacklist`. Реалізувати
+ендпоінт для **Logout** (який просто додає refresh-токен у чорний список).
+2. **Author Permission**: Створити permission `IsOwnerOrAdmin`. - Логіка: Редагувати/видаляти товар може *тільки* той
+користувач, який його створив (поле `user` у моделі `Product`), або адміністратор. - Підказка: метод
+`has_object_permission(self, request, view, obj)`.
+3. **Group-based content**: У `News` зробити так, щоб тільки користувачі групи "Journalists" могли публікувати новини.

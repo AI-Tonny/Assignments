@@ -1,0 +1,148 @@
+{
+	"info": {
+		"_postman_id": "891d5605-2e0b-4e1c-9545-7ea58f8d2483",
+		"name": "API Product/News & JWT authentication, blacklist & permissions",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48670200",
+		"_collection_link": "https://akproiok-4528261.postman.co/workspace/1e001616-d551-448c-874e-25edca4d228a/collection/48670200-891d5605-2e0b-4e1c-9545-7ea58f8d2483?action=share&source=collection_link&creator=48670200"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "User registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Alex\",\r\n    \"email\": \"alex@techaccount.com\",\r\n    \"password\": \"ps-food\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_host}}/api/auth/register/",
+							"host": [
+								"{{local_host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Alex\",\r\n    \"password\": \"ps-food\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_host}}/api/auth/login/",
+							"host": [
+								"{{local_host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User token refresh",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc2NzQ0NjY2MiwiaWF0IjoxNzY3MzYwMjYyLCJqdGkiOiJmM2E2NTVkNDY2ZmQ0OGJhODE4YTA5OThkNzlmMGY3MyIsInVzZXJfaWQiOiIxIn0.MaGmOIXjE5cq0qsP_MWB81VfNkBsEH4_owFm6SRiA-c\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_host}}/api/auth/token/refresh/",
+							"host": [
+								"{{local_host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"token",
+								"refresh",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc2NzQ0NjY2MiwiaWF0IjoxNzY3MzYwMjYyLCJqdGkiOiJmM2E2NTVkNDY2ZmQ0OGJhODE4YTA5OThkNzlmMGY3MyIsInVzZXJfaWQiOiIxIn0.MaGmOIXjE5cq0qsP_MWB81VfNkBsEH4_owFm6SRiA-c\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_host}}/api/auth/logout/",
+							"host": [
+								"{{local_host}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"logout",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": []
+		},
+		{
+			"name": "News",
+			"item": []
+		}
+	],
+	"variable": [
+		{
+			"key": "local_host",
+			"value": "",
+			"type": "default"
+		}
+	]
+}

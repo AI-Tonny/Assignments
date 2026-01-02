@@ -1,0 +1,30 @@
+Спочатку створив проєкт 'django-admin startproject core .', потім створив app /auth 'python manage.py startapp auth'
+далі створив файл 'auth.serializers.py' в середині нього написав serializer UserRegistrationSerializer для регістрації,
+потім створив файл 'auth.views.py' в ній написав class RegisterView(generics.CreateAPIView) - для створення користувача,
+generics.CreateAPIView - це API використовується тільки для створення обєктів в бд, та class LogoutView(ViewAPI) - для
+можливість виходу користувача, views.ViewAPI - для легкого створення RESTful API, написав лише def post(self, request)
+- функцію для post запиту на '/api/auth/logout/', тут відбувається додавання refresh_token до black_list, що робить його
+не дійсним, далі створив app /products, написав в 'products.models.py' модель Product, далі створив файл
+'models.serializers.py' в ній створив serializer ProductSerializer, read_only_fields = ['user'] - вказав, що поле user
+можна тільки читати, далі створив файл 'products.permissions.py' написав в ньому permission class IsOwnerOrAdmin(
+permissions.BasePermission) - для того, щоб змінити або видалити продукт міг або admin або його власник,
+def has_permission(self, request, view) - в цю функцію пишуть всю логіку permission, return True/False - True означає
+можна надати доступ, False - відмовити в доступі, return True if request.method in permissions.SAFE_METHODS - чи метод
+запиту безпечний ('GET', 'HEAD', 'OPTIONS'), return False if not request.user or not request.user.is_authenticated -
+not request.user чи обєкт не дорівнює None, request.user.is_authenticated чи користувач авторизований (не AnonymousUser
+), return True if request.user.is_superuser - чи користувач є адміном, if request.method in ['PUT', 'PATCH', 'DELETE']
+- перевіряю якщо метод запиту ('PUT' or 'PATCH' or 'DELETE') тоді мені потрібно перевірити чи користувач є власником
+продукту, product_id = request.resolver_match.kwargs.get('pk') - отримую id продукту який вказаний в path-parameter, я
+думаю він там точно буде, бо просто запит сюди не дійшов би, бо структура для методів ('PUT', 'PATCH', 'DELETE')
+передбачає '/api/products/<int:pk(Обов'язковий path-parameter)>/', product = Product.objects.get(id=product_id) -
+отримую product з бд через products_id, return True except Product.DoesNotExist - якщо продукту не знайдено в бд по id
+(Це для того щоб прокинути далі і повернуло не 403 Forbidden, а 404 NotFound), return True if product.user ==
+request.user - якщо власником продукту є користувач інакше return False, далі написав в 'products.views.py' class
+ProductViewSet(viewsets.ModelViewSet) - для роботи з Products, def perform_create(self, serializer) - функція
+виконується перед створенням обєкта, serializer.save(user=self.request.user) - кажу що user це поточний користувач,
+потім в 'core.urls.py', router = DefaultRouter - приєдную ProductViewSet до router, а потім router приєдную в основну
+навігацію через path('api/', include(router.urls)), далі приблизно так само я роблю з app /news тільки в
+'news.permissions.py' if request.user.groups.filter(name='Journalists').exists() - перевіряю чи користувач входить в
+групу 'Journalists', також приєдную в 'core.urls.py' до router, потім додаю в 'core.settings.py INSTALLED_APPS' -
+'rest_framework_simplejwt.token_blacklist', 'rest_framework', 'products', 'news', створюю міграції та запускаю їх
+'python manage.py makemigrations/migrate', потім пишу Postman запити потім запускаю програму

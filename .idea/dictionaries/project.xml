@@ -2,6 +2,8 @@
   <dictionary name="project">
     <words>
       <w>endblock</w>
+      <w>серіалізатор</w>
+      <w>файл</w>
     </words>
   </dictionary>
 </component>
