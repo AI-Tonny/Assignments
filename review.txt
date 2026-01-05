@@ -1,0 +1,17 @@
+Створив додаток 'django-admin startproject core .', створив app /auth налаштував, потім створив app /news /products
+у /news додав файл 'news.schema.py' написав там class UserType/NewsType для представлення User/News, далі постровював
+класи мутацій CreateNewsMutation, UpdateNewsMutation, DeleteNewsMutation, Mutation-базовий клас від якого
+успадковуються мутації, class Arguments-клас який знаходиться в середині, та в середині визначає поля які можна
+передати, news = Field()-як я зрозумів зміні які знаходяться в середині таких класів можуть бути повернуті в відповіді,
+def mutate(self, info, ...)-функція мутація, тут пишеться як повина відпрацьовувати мутація, вона може приймати
+параметри від запиту, class Mutation(ObjectType)-головний клас де зібрані всі mutation, class Query(ObjectType)-
+головний клас де зібрані всі query, all_news = List(NewsType) - query, його функція пишеться в цьому ж класі, потім
+створив файл 'core.schema.py' де є два основні класи Query Mutation, Query - успадковується від всіх Query класів та
+ObjectType (news.schema.Query, products.schema.Query, ObjectType), Mutation - успадковується від всіх Mutation класів
+та ObjectType (news.schema.Mutation, products.schema.Mutation, ObjectType), також в цьому файлі є зміна яка зберігає
+схему GraphQL schema = Schema(query=Query, mutation=Mutation), потім в 'core.settings.py' в INSTALLED_APPS додаються
+всі apps 'rest_framework_simplejwt', 'rest_framework', 'graphene_django', 'news', 'products', graphene_django - для
+GraphQL, далі написав налаштування для REST_FRAMEWORK, SIMPLE_JWT, GRAPHENE = { 'SCHEMA': 'core.schema.schema' },
+'SCHEMA' - вказує де знаходиться основна schema, в файлі 'core.urls.py' добавив для роботи сторінки з GraphQL роут
+path('graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True)), зробив міграції та запустив їх, потім запустив
+програму
